@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <title>QR-Gen</title>
+</head>
+<body>
+    <p id="header">
+        <h1 id="title">Simple Qr Code Generator</h1>
+    </p>
+    <!-- <img src="/static/src/icon.png" id="logo_img"> -->
+    <form action="code" method="post">
+        <p>Insert the Value to be converted</p>
+        <input type="text" name="value_input" id="input">
+        <input type="Submit" value="Submit" id="submit">
+        <br>
+        <br>
+        <img src="{{ user_image }}" alt="" id="code">
+    </form>
+
+</body>
+</html>
