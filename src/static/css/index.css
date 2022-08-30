@@ -1,25 +1,26 @@
-
+html {
+    height: 100%;
+}
 
 body {
     text-align: center;
     background-color:#1F363D;
     caret-color: #F4D35E;
+    height: 100%;
 
 }
 
 #header {
     background-color: #B98B82;
+    font-size: xx-large;
+    line-height: 300%;
+    height: 10%;
     margin-top: 0%;
-    height: 100px;
-}
-
-#title{
-    margin: -5%;
     color: #1F363D;
 }
 
 form {
-    margin-top: 7%;
+    margin-top: -2%;
 }
 
 #form-div {
