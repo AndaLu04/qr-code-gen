@@ -10,13 +10,38 @@
         <h1 id="title">Simple Qr Code Generator</h1>
     </p>
     <!-- <img src="/static/src/icon.png" id="logo_img"> -->
-    <form action="code" method="post">
+    <form  method="post">
         <p>Insert the Value to be converted</p>
-        <input type="text" name="value_input" id="input">
-        <input type="Submit" value="Submit" id="submit">
-        <br>
-        <br>
-        <img src="{{ user_image }}" alt="" id="code">
+        <p id="form-p">
+            Value:
+            <input type="text" name="value_input" value="{{ preview_value }}" id="input">
+            <br>
+            Design:
+            <select id="design" name="design_input" selected="{{ preview_design }}">
+                <option value="default">Default</option>
+                <option value="gapped">Gapped</option>
+                <option value="circle">Circled</option>
+                <option value="rounded">Rounded</option>
+                <option value="vertical">Vertical</option>
+                <option value="horizontal">Horizontal</option>
+            </select>
+            <br>
+            Resolution:
+            <select id="resolution" name="resolution_input" selected="{{ preview_resolution }}">
+                <option value="default">Default</option>
+                <option value="very low">very low</option>
+                <option value="low">low</option>
+                <option value="high">high</option>
+                <option value="very high">very high</option>
+            </select>
+            <br>
+            Size (Value from 1-40):
+            <input type="text" name="size_input" value="{{ preview_size }}" id="size">
+            <br>
+            <input type="Submit" onclick="javascript: form.action='/preview';" value="Preview" id="preview">
+            <input type="Submit" onclick="javascript: form.action='/download';" value="Download" id="download">
+        </p>
+        <img src="data:image/png;base64,{{ user_image }}" alt="" id="code">
     </form>
 
 </body>

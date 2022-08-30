@@ -19,7 +19,11 @@ body {
 }
 
 form {
-    margin-top: 15%;
+    margin-top: 7%;
+}
+
+#form-div {
+    margin-top: 0%;
 }
 
 #logo_img {
@@ -27,7 +31,7 @@ form {
     margin-top: 3%;
 }
 
-#input {
+#input, #design, #resolution, #size {
     margin-top: 1%;
     width: 15%;
     padding: 0.25% 0.5%;
@@ -35,23 +39,28 @@ form {
     border-radius: 4px;
     background-color: #57886C;
     box-shadow: 10px 5px black;
+    color:#F4D35E;
 
 }
 
-#input:focus{
+#input:focus, #design:focus, #resolution:focus, #size:focus{
     background-color: #81c59f;
     box-shadow: 10px 5px grey;
     border: 2px solid #F4D35E;
     outline: none;
 }
 
-#input:hover{
+#input:hover, #design:hover, #resolution:hover, #size:hover{
     box-shadow: 10px 5px grey;
     background-color: #81c59f;
 }
 
-#submit {
-    margin-left: 1%;
+option:hover {
+    background-color: #F4D35E;
+}
+
+#preview, #download {
+    margin-top: 1%;
     border: 2px solid #1F363D;
     border-radius: 5px;
     background-color: #f4d35e;
@@ -61,7 +70,7 @@ form {
     box-shadow: 10px 5px black;
 }
 
-#submit:hover{
+#preview:hover, #download:hover {
     box-shadow: 10px 5px grey;
     background-color: #ffefb7;
 }
@@ -76,4 +85,9 @@ p {
     font-family: 'Courier New', Courier, monospace;
     font-size: 1.7em;
     margin-top: 5%;
+}
+
+#form-p {
+    font-size: 1em;
+    margin-top: 1%;
 }
