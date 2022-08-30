@@ -17,22 +17,22 @@
             <input type="text" name="value_input" value="{{ preview_value }}" id="input">
             <br>
             Design:
-            <select id="design" name="design_input" selected="{{ preview_design }}">
-                <option value="default">Default</option>
-                <option value="gapped">Gapped</option>
-                <option value="circle">Circled</option>
-                <option value="rounded">Rounded</option>
-                <option value="vertical">Vertical</option>
-                <option value="horizontal">Horizontal</option>
+            <select id="design" name="design_input">
+                <option value="default" {% if preview_design == 'default' %} selected {% endif %}>Default</option>
+                <option value="gapped" {% if preview_design == 'gapped' %} selected {% endif %}>Gapped</option>
+                <option value="circle" {% if preview_design == 'circle' %} selected {% endif %}>Circled</option>
+                <option value="rounded" {% if preview_design == 'rounded' %} selected {% endif %}>Rounded</option>
+                <option value="vertical" {% if preview_design == 'vertical' %} selected {% endif %}>Vertical</option>
+                <option value="horizontal" {% if preview_design == 'horizontal' %} selected {% endif %}>Horizontal</option>
             </select>
             <br>
             Resolution:
-            <select id="resolution" name="resolution_input" selected="{{ preview_resolution }}">
-                <option value="default">Default</option>
-                <option value="very low">very low</option>
-                <option value="low">low</option>
-                <option value="high">high</option>
-                <option value="very high">very high</option>
+            <select id="resolution" name="resolution_input">
+                <option value="default" {% if preview_resolution == 'default' %} selected {% endif %}>Default</option>
+                <option value="very low" {% if preview_resolution == 'very low' %} selected {% endif %}>very low</option>
+                <option value="low" {% if preview_resolution == 'low' %} selected {% endif %}>low</option>
+                <option value="high" {% if preview_resolution == 'high' %} selected {% endif %}>high</option>
+                <option value="very high" {% if preview_resolution == 'very high' %} selected {% endif %}>very high</option>
             </select>
             <br>
             Size (Value from 1-40):
