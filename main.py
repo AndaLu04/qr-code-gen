@@ -2,9 +2,7 @@ import io
 import base64
 import qrcode
 
-from flask import Flask, render_template, request,make_response, send_file
-from PIL import Image
-from io import BytesIO
+from flask import Flask, render_template, request, send_file
 from qrcode.image.styledpil import StyledPilImage
 from qrcode.image.styles.moduledrawers import SquareModuleDrawer
 from qrcode.image.styles.moduledrawers import GappedSquareModuleDrawer
@@ -98,12 +96,9 @@ def download():
     except ValueError:
         size = 5
     img_data = render_code(value, design, resolution, size)
-    img = Image.open(BytesIO(base64.b64decode(img_data)))
-    return
+    img = base64.b64decode(img_data)
+    return send_file(io.BytesIO(img), as_attachment=True, mimetype='image/png', download_name='qr-code.png')
 
 
 if __name__ == '__main__':
     app.run(host="127.0.0.1", port=8080, debug=True)
-
-
-
