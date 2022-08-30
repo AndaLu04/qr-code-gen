@@ -5,6 +5,10 @@
 
 qr-code-gene is a simple web app for generating Qr-Codes written in Python with the flask Framework
 
+## Demo
+
+You can preview and use the app under [qr.luiserbert.de](https://qr.luiserbert.de "qr.luiserbert.de")
+
 ## Installation
 
 Make shure [docker](https://docs.docker.com/get-docker "Docker Docs") and [docker-compose](https://docs.docker.com/compose/install/ "Docker-Compose Docs") is installed  
