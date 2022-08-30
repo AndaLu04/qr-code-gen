@@ -1,5 +1,6 @@
-FROM debian:stable-slim
-ADD ./code
+FROM python:3.9
 WORKDIR /code
+COPY requirements.txt .
 RUN pip install -r requirements.txt
-CMD python3 main.py
+COPY src/ .
+CMD [ "python", "./main.py" ]
