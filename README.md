@@ -11,7 +11,7 @@ You can preview and use the app under [qr.luiserbert.de](https://qr.luiserbert.d
 
 ## Installation
 
-Make shure [docker](https://docs.docker.com/get-docker "Docker Docs") and [docker-compose](https://docs.docker.com/compose/install/ "Docker-Compose Docs") is installed  
+Make sure [docker](https://docs.docker.com/get-docker "Docker Docs") and [docker-compose](https://docs.docker.com/compose/install/ "Docker-Compose Docs") is installed  
 Clone the Repository and start the stack
 
 ```bash
