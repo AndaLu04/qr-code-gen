@@ -1,4 +1,7 @@
 # qr-code-gen
+![](https://badgen.net/badge/python/3.9/green)
+![](https://badgen.net/badge/docker/compose?icon=docker)
+![](https://badgen.net/badge/flask/2.2.2/yellow)
 
 qr-code-gene is a simple web app for generating Qr-Codes written in Python with the flask Framework
 
