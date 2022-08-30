@@ -17,6 +17,8 @@ You can now acces the web-app via
 http://hostname:5432
 ```
 
+If you plann on making the Application publicly available I recommend running behind a proxy, since the connection wont be secured otherwise
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
