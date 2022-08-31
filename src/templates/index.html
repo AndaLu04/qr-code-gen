@@ -2,21 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/static/css/index.css">
-    <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
     <title>QR-Gen</title>
 </head>
 <body>
     <div id="header">
         Simple Qr Code Generator
     </div>
-    <form  method="post">
-        <p>Insert the Value to be converted</p>
+    <form method="post">
+        <p>Insert the value to be converted</p>
         <p id="form-p">
-            Value:
+            <label for="input">Value:</label>
             <input type="text" name="value_input" value="{{ preview_value }}" id="input">
             <br>
-            Design:
+            <label for="design">Design:</label>
             <select id="design" name="design_input">
                 <option value="default" {% if preview_design == 'default' %} selected {% endif %}>Default</option>
                 <option value="gapped" {% if preview_design == 'gapped' %} selected {% endif %}>Gapped</option>
@@ -26,7 +26,7 @@
                 <option value="horizontal" {% if preview_design == 'horizontal' %} selected {% endif %}>Horizontal</option>
             </select>
             <br>
-            Resolution:
+            <label for="resolution">Resolution:</label>
             <select id="resolution" name="resolution_input">
                 <option value="default" {% if preview_resolution == 'default' %} selected {% endif %}>Default</option>
                 <option value="very low" {% if preview_resolution == 'very low' %} selected {% endif %}>very low</option>
@@ -35,11 +35,11 @@
                 <option value="very high" {% if preview_resolution == 'very high' %} selected {% endif %}>very high</option>
             </select>
             <br>
-            Size (Value from 1-40):
+            <label for="size">Size (Value from 1-40):</label>
             <input type="text" name="size_input" value="{{ preview_size }}" id="size">
             <br>
-            <input type="Submit" onclick="javascript: form.action='/preview';" value="Preview" id="preview">
-            <input type="Submit" onclick="javascript: form.action='/download';" value="Download" id="download">
+            <input type="Submit" onclick="form.action='/preview';" value="Preview" id="preview">
+            <input type="Submit" onclick="form.action='/download';" value="Download" id="download">
         </p>
         <img src="data:image/png;base64,{{ user_image }}" alt="" id="code">
     </form>
