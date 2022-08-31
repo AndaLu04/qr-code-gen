@@ -4,16 +4,12 @@ import qrcode
 
 from flask import Flask, render_template, request, send_file
 from qrcode.image.styledpil import StyledPilImage
-from qrcode.image.styles.moduledrawers import SquareModuleDrawer
-from qrcode.image.styles.moduledrawers import GappedSquareModuleDrawer
-from qrcode.image.styles.moduledrawers import CircleModuleDrawer
-from qrcode.image.styles.moduledrawers import RoundedModuleDrawer
-from qrcode.image.styles.moduledrawers import VerticalBarsDrawer
-from qrcode.image.styles.moduledrawers import HorizontalBarsDrawer
+from qrcode.image.styles.moduledrawers import SquareModuleDrawer, GappedSquareModuleDrawer, CircleModuleDrawer, \
+    RoundedModuleDrawer, VerticalBarsDrawer, HorizontalBarsDrawer
 
 
 def render_code(value, module_drawer='default', resolution='default', size=5, fill_color='black', back_color='white'):
-    drawerlist = {
+    drawer_list = {
         'default': SquareModuleDrawer(),
         'gapped': GappedSquareModuleDrawer(),
         'circle': CircleModuleDrawer(),
@@ -22,7 +18,7 @@ def render_code(value, module_drawer='default', resolution='default', size=5, fi
         'horizontal': HorizontalBarsDrawer()
     }
 
-    resolutionlist = {
+    resolution_list = {
         'default': '100',
         'very low': '10',
         'low': '50',
@@ -30,11 +26,11 @@ def render_code(value, module_drawer='default', resolution='default', size=5, fi
         'very high': '250'
     }
 
-    drawer = drawerlist[module_drawer]
+    drawer = drawer_list[module_drawer]
     emb_img = None
     qr = qrcode.QRCode(
         version=size,
-        box_size=resolutionlist[resolution],
+        box_size=resolution_list[resolution],
         error_correction=qrcode.constants.ERROR_CORRECT_H,
         border=1
     )
@@ -53,6 +49,16 @@ def render_code(value, module_drawer='default', resolution='default', size=5, fi
     return encoded_img_mem.decode("utf-8")
 
 
+def get_form_data(value: str, design: str, resolution: str, size: str) -> tuple[str, str, str, int]:
+    try:
+        size = int(size)
+        if size not in range(1, 41):
+            size = 5
+    except ValueError:
+        size = 5
+    return value, design, resolution, size
+
+
 app = Flask(__name__)
 
 
@@ -61,43 +67,31 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/preview', methods=['GET', 'POST'])
+@app.route('/preview', methods=['POST'])
 def code():
-    value = request.form['value_input']
-    design = request.form['design_input']
-    resolution = request.form['resolution_input']
-    size = request.form['size_input']
-    try:
-        size = int(size)
-        if not 1 <= size <= 40:
-            size = 5
-    except ValueError:
-        size = 5
-    img_data = render_code(value, design, resolution, size)
+    value, design, resolution, size = get_form_data(request.form['value_input'],
+                                                    request.form['design_input'],
+                                                    request.form['resolution_input'],
+                                                    request.form['size_input'])
     return render_template('index.html',
                            preview_value=value,
                            preview_design=design,
                            preview_resolution=resolution,
                            preview_size=size,
-                           user_image=img_data
+                           user_image=render_code(value, design, resolution, size)
                            )
 
 
-@app.route('/download', methods=['GET', 'POST'])
+@app.route('/download', methods=['POST'])
 def download():
-    value = request.form['value_input']
-    design = request.form['design_input']
-    resolution = request.form['resolution_input']
-    size = request.form['size_input']
-    try:
-        size = int(size)
-        if not 1 <= size <= 40:
-            size = 5
-    except ValueError:
-        size = 5
-    img_data = render_code(value, design, resolution, size)
-    img = base64.b64decode(img_data)
-    return send_file(io.BytesIO(img), as_attachment=True, mimetype='image/png', download_name='qr-code.png')
+    value, design, resolution, size = get_form_data(request.form['value_input'],
+                                                    request.form['design_input'],
+                                                    request.form['resolution_input'],
+                                                    request.form['size_input'])
+    return send_file(io.BytesIO(base64.b64decode(render_code(value, design, resolution, size))),
+                     as_attachment=True,
+                     mimetype='image/png',
+                     download_name='qr-code.png')
 
 
 if __name__ == '__main__':
