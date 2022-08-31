@@ -3,7 +3,7 @@ import base64
 
 import qrcode
 import waitress
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request, send_file, redirect
 from qrcode.image.styledpil import StyledPilImage
 from qrcode.image.styles.moduledrawers import SquareModuleDrawer, GappedSquareModuleDrawer, CircleModuleDrawer, \
     RoundedModuleDrawer, VerticalBarsDrawer, HorizontalBarsDrawer
@@ -63,13 +63,15 @@ def get_form_data(value: str, design: str, resolution: str, size: str) -> tuple[
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
 
 
-@app.route('/preview', methods=['POST'])
+@app.route('/preview')
 def code():
+    if request.method != 'POST':
+        return redirect('/', code=303)
     value, design, resolution, size = get_form_data(request.form['value_input'],
                                                     request.form['design_input'],
                                                     request.form['resolution_input'],
@@ -83,8 +85,10 @@ def code():
                            )
 
 
-@app.route('/download', methods=['POST'])
+@app.route('/download')
 def download():
+    if request.method != 'POST':
+        return redirect('/', code=303)
     value, design, resolution, size = get_form_data(request.form['value_input'],
                                                     request.form['design_input'],
                                                     request.form['resolution_input'],
