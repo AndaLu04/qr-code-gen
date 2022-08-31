@@ -1,7 +1,8 @@
 import io
 import base64
-import qrcode
 
+import qrcode
+import waitress
 from flask import Flask, render_template, request, send_file
 from qrcode.image.styledpil import StyledPilImage
 from qrcode.image.styles.moduledrawers import SquareModuleDrawer, GappedSquareModuleDrawer, CircleModuleDrawer, \
@@ -95,4 +96,4 @@ def download():
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5432, debug=False)
+    waitress.serve(app.run(host="0.0.0.0", port=5432, debug=False))
