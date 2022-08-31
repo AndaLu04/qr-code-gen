@@ -8,30 +8,31 @@ from qrcode.image.styledpil import StyledPilImage
 from qrcode.image.styles.moduledrawers import SquareModuleDrawer, GappedSquareModuleDrawer, CircleModuleDrawer, \
     RoundedModuleDrawer, VerticalBarsDrawer, HorizontalBarsDrawer
 
-
-def render_code(value, module_drawer='default', resolution='default', size=5, fill_color='black', back_color='white'):
-    drawer_list = {
+CONFIGURATION: dict = {
+    'drawer-list': {
         'default': SquareModuleDrawer(),
         'gapped': GappedSquareModuleDrawer(),
         'circle': CircleModuleDrawer(),
         'rounded': RoundedModuleDrawer(),
         'vertical': VerticalBarsDrawer(),
         'horizontal': HorizontalBarsDrawer()
-    }
-
-    resolution_list = {
+    },
+    'resolution-list': {
         'default': '100',
         'very low': '10',
         'low': '50',
         'high': '150',
         'very high': '250'
     }
+}
 
-    drawer = drawer_list[module_drawer]
+
+def render_code(value, module_drawer='default', resolution='default', size=5, fill_color='black', back_color='white'):
+    drawer = CONFIGURATION['drawer-list'][module_drawer]
     emb_img = None
     qr = qrcode.QRCode(
         version=size,
-        box_size=resolution_list[resolution],
+        box_size=CONFIGURATION['resolution-list'][resolution],
         error_correction=qrcode.constants.ERROR_CORRECT_H,
         border=1
     )
