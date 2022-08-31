@@ -3,7 +3,7 @@
 ![](https://badgen.net/badge/docker/compose?icon=docker)
 ![](https://badgen.net/badge/flask/2.2.2/yellow)
 
-qr-code-gene is a simple web app for generating Qr-Codes written in Python with the flask Framework
+qr-code-gene is a simple web app for generating QR-Codes written in Python with the FLASK framework
 
 ## Demo
 
@@ -11,8 +11,8 @@ You can preview and use the app under [qr.luiserbert.de](https://qr.luiserbert.d
 
 ## Installation
 
-Make sure [docker](https://docs.docker.com/get-docker "Docker Docs") and [docker-compose](https://docs.docker.com/compose/install/ "Docker-Compose Docs") is installed  
-Clone the Repository and start the stack
+Make sure [docker](https://docs.docker.com/get-docker "Docker Docs") and [docker-compose](https://docs.docker.com/compose/install/ "Docker-Compose Docs") is installed.
+Clone the repository and start the stack.
 
 ```bash
 docker-compose up -d
