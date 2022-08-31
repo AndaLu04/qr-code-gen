@@ -3,7 +3,7 @@
 ![](https://badgen.net/badge/docker/compose?icon=docker)
 ![](https://badgen.net/badge/flask/2.2.2/yellow)
 
-qr-code-gene is a simple web app for generating QR-Codes written in Python with the FLASK framework
+qr-code-gen is a simple web app for generating QR-Codes written in Python with the FLASK framework
 
 ## Demo
 
