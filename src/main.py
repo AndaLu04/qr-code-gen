@@ -69,7 +69,7 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/preview')
+@app.route('/preview', methods=['POST'])
 def code():
     if request.method != 'POST':
         return redirect('/', code=303)
@@ -86,7 +86,7 @@ def code():
                            )
 
 
-@app.route('/download')
+@app.route('/download', methods=['POST'])
 def download():
     if request.method != 'POST':
         return redirect('/', code=303)
