@@ -41,8 +41,13 @@
             <input type="Submit" onclick="form.action='/preview';" value="Preview" id="preview">
             <input type="Submit" onclick="form.action='/download';" value="Download" id="download">
         </p>
-        <img src="data:image/png;base64,{{ user_image }}" alt="" id="code">
     </form>
+    <br>
+    <form method="get">
+        <input type="Submit" onclick="form.action='/';" value="Reset" id="reset">
+    </form>
+    <img src="data:image/png;base64,{{ user_image }}" alt="" id="code">
+
 
 </body>
 </html>

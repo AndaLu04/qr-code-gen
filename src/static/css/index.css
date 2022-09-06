@@ -60,7 +60,7 @@ option:hover {
     background-color: #F4D35E;
 }
 
-#preview, #download {
+#preview, #download, #reset {
     margin-top: 1%;
     border: 2px solid #1F363D;
     border-radius: 5px;
@@ -71,7 +71,7 @@ option:hover {
     box-shadow: 10px 5px black;
 }
 
-#preview:hover, #download:hover {
+#preview:hover, #download:hover, #reset:hover {
     box-shadow: 10px 5px grey;
     background-color: #ffefb7;
 }
