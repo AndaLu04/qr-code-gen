@@ -39,6 +39,9 @@
             <label for="size">Size (Value from 1-40):</label>
             <input type="text" name="size_input" value="{{ preview_size }}" id="size">
             <br>
+            <label for="emb_img">Embed Image (PNG):</label>
+            <input type="file" name="emb_img_input" value="{{ preview_emb_img }}" id="emb_img">
+            <br>
             <input type="Submit" onclick="form.action='/preview';" value="Preview" id="preview">
             <input type="Submit" onclick="form.action='/download';" value="Download" id="download">
         </p>

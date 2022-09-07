@@ -32,7 +32,7 @@ form {
     margin-top: 3%;
 }
 
-#input, #design, #resolution, #size {
+#input, #design, #resolution, #size, #emb_img {
     margin-top: 1%;
     width: 15%;
     padding: 0.25% 0.5%;
@@ -41,17 +41,16 @@ form {
     background-color: #57886C;
     box-shadow: 10px 5px black;
     color:#F4D35E;
-
 }
 
-#input:focus, #design:focus, #resolution:focus, #size:focus{
+#input:focus, #design:focus, #resolution:focus, #size:focus, #emb_img:focus{
     background-color: #81c59f;
     box-shadow: 10px 5px grey;
     border: 2px solid #F4D35E;
     outline: none;
 }
 
-#input:hover, #design:hover, #resolution:hover, #size:hover{
+#input:hover, #design:hover, #resolution:hover, #size:hover, #emb_img:hover{
     box-shadow: 10px 5px grey;
     background-color: #81c59f;
 }
